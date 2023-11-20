@@ -4,10 +4,8 @@ import baseball.GameControl
 import baseball.data.BaseballResult
 import baseball.util.NumberConfig
 
-private const val ALL_STRIKE = 3
-
 fun BaseballResult.isAllStrike(): Boolean {
-    return this.strike == ALL_STRIKE
+    return this.strike == NumberConfig.NUMBERS_SIZE.value
 }
 
 fun String.toIntList(): List<Int> {
