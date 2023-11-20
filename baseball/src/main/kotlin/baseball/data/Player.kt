@@ -1,6 +1,6 @@
-package baseball
+package baseball.data
 
-import baseball.BallNumber
+import baseball.data.BallNumber
 
 data class Player(
     val playerNumber: BallNumber
