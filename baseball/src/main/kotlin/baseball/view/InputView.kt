@@ -1,20 +1,36 @@
 package baseball.view
 
 import baseball.data.BallNumber
+import baseball.extention.toIntList
+import baseball.validation.InputValidation
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun readUserNumbers(): BallNumber {
-        print(INPUT_VIEW)
-        val numbers = Console.readLine()
-        return BallNumber(numbers.map { it.digitToInt() })
+        while (true) {
+            try {
+                print(INPUT_VIEW)
+                val numbers = Console.readLine()
+                InputValidation.validateInputNumber(numbers)
+                return BallNumber(numbers.toIntList())
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun readRestart() : Int {
         println(ALL_CORRECT)
-        println(INPUT_RESTART)
-        val number = Console.readLine()
-        return number.toInt()
+        while (true) {
+            try {
+                println(INPUT_RESTART)
+                val number = Console.readLine()
+                InputValidation.validateInputRestart(number)
+                return number.toInt()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     companion object {
