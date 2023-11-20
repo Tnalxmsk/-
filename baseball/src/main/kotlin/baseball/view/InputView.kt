@@ -1,13 +1,13 @@
 package baseball.view
 
-import baseball.BallNumber
+import baseball.data.BallNumber
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
     fun readUserNumbers(): BallNumber {
         print(INPUT_VIEW)
         val numbers = Console.readLine()
-        return BallNumber(numbers.map { it.code })
+        return BallNumber(numbers.map { it.digitToInt() })
     }
 
     companion object {
