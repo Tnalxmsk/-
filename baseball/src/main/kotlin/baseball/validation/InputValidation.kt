@@ -1,9 +1,7 @@
 package baseball.validation
 
-import baseball.GameControl
 import baseball.extention.isValidNumbersRange
 import baseball.extention.isValidRestartInput
-import baseball.util.NumberConfig
 
 enum class InputValidation(val message: String) {
     EMPTY_INPUT("값을 입력하지 않았습니다. 다시 입력해 주세요."),
@@ -13,6 +11,8 @@ enum class InputValidation(val message: String) {
     DUPLICATION_NUMBER("중복된 숫자를 입력하였습니다. 다시 입력해 주세요.");
 
     companion object {
+        private const val ERROR_HEADER = "[ERROR]"
+
         fun validateInputNumber(input: String) {
             val error = when {
                 input.isEmpty() -> EMPTY_INPUT
@@ -22,7 +22,7 @@ enum class InputValidation(val message: String) {
                 NumberValidator.hasDuplication(input) -> DUPLICATION_NUMBER
                 else -> return
             }
-            throw IllegalArgumentException("[ERROR] ${error.message}")
+            throw IllegalArgumentException("$ERROR_HEADER ${error.message}")
         }
 
         fun validateInputRestart(input: String) {
@@ -32,7 +32,7 @@ enum class InputValidation(val message: String) {
                 input.length != 1 -> INVALID_NUMBER
                 else -> return
             }
-            throw IllegalArgumentException("[ERROR] ${error.message}")
+            throw IllegalArgumentException("$ERROR_HEADER ${error.message}")
         }
     }
 }
