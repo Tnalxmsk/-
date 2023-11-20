@@ -3,9 +3,7 @@ package baseball.view
 import baseball.data.BaseballResult
 
 class OutputView {
-    fun printStartView() {
-        println(GAME_START_VIEW)
-    }
+    fun printStartView() = println(GAME_START_VIEW)
 
     fun printGameResult(result: BaseballResult) {
         when {
