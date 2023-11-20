@@ -1,6 +1,7 @@
 package baseball
 
 import baseball.data.BallNumber
+import baseball.data.BaseballResult
 import baseball.data.Computer
 import baseball.data.Player
 import baseball.util.NumberComparator
@@ -14,31 +15,37 @@ class BaseballApp(
 ) {
     fun runBaseballGame() {
         outputView.printStartView()
-        var computer = controlAnswerNumber()
-        var gameController = true
-        while (gameController) {
-            gameController = controlGame(computer)
-            computer = controlAnswerNumber()
+        while (true) {
+            controlGame()
+            when(inputView.readRestart()) {
+                RESTART -> continue
+                STOP -> return
+            }
         }
     }
 
-    private fun controlAnswerNumber() : Computer {
+    private fun applyAnswerNumber() : Computer {
         val answerNumber = BallNumber(NumberGenerator.generateNumbers())
         return Computer(answerNumber)
     }
 
-    private fun controlGame(computer: Computer) : Boolean {
-        println(computer.computerNumber)
-        val player = Player(inputView.readUserNumbers())
-        val result = NumberComparator.compareNumbers(player.playerNumber, computer.computerNumber)
-        outputView.printGameResult(result)
-        return controlRestart(result.strike)
+    private fun controlGame() {
+        val computer = applyAnswerNumber()
+        while (true) {
+            val player = Player(inputView.readUserNumbers())
+            val result = NumberComparator.compareNumbers(player.playerNumber, computer.computerNumber)
+            outputView.printGameResult(result)
+            if (isAllStrike(result)) return
+        }
     }
 
-    private fun controlRestart(strike: Int) : Boolean {
-        if (strike == 3) {
-            return inputView.readRestart() == 1
-        }
-        return true
+    private fun isAllStrike(result: BaseballResult): Boolean {
+        return result.strike == ALL_STRIKE
+    }
+
+    companion object {
+        private const val ALL_STRIKE = 3
+        private const val STOP = 2
+        private const val RESTART = 1
     }
 }
