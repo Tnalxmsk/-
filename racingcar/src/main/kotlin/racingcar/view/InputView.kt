@@ -7,4 +7,9 @@ class InputView {
         val names = Console.readLine()
         return names
     }
+
+    fun readTotalRound(): Int {
+        val totalRound = Console.readLine()
+        return totalRound.toInt()
+    }
 }
