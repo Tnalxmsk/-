@@ -12,7 +12,9 @@ class RacingGame(
     override fun startGame() {
         val user = createUser()
         val round = inputView.readTotalRound()
-        startRound(user)
+        repeat(round) {
+            startRound(user)
+        }
     }
 
     private fun createUser(): User {
