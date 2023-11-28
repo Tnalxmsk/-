@@ -1,6 +1,7 @@
 package racingcar.extension
 
 import racingcar.model.User
+import racingcar.model.Winner
 
 import racingcar.model.car.Car
 
@@ -21,3 +22,5 @@ fun User.getLongDistance(): String {
     }
     return longDistance
 }
+
+fun Winner.getAllWinnerName(): String = this.winners.joinToString(", ") { it.name }
