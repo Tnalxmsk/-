@@ -10,6 +10,6 @@ class Car(val name: String) : Movement {
     }
 
     override fun stopMove() {
-        distance += ""
+        // 움직임을 멈추기 때문에 거리가 증가하지 않음
     }
 }

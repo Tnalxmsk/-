@@ -2,8 +2,8 @@ package racingcar.extension
 
 import racingcar.model.User
 import racingcar.model.Winner
-
 import racingcar.model.car.Car
+import racingcar.util.NumberGenerator
 
 fun String.toCarList(): List<Car> {
     val input = this.split(",")
@@ -11,6 +11,13 @@ fun String.toCarList(): List<Car> {
         1 -> listOf(Car(this))
         else -> input.map { name ->
             Car(name) }
+    }
+}
+
+fun Car.decideMove() {
+    when {
+        NumberGenerator.getRandomNumber() < 4 -> stopMove()
+        else -> moveForward()
     }
 }
 

@@ -1,11 +1,11 @@
 package racingcar.model.game
 
+import racingcar.extension.decideMove
 import racingcar.extension.getLongDistance
 import racingcar.model.User
 import racingcar.extension.toCarList
 import racingcar.model.Winner
 import racingcar.model.car.Car
-import racingcar.util.NumberGenerator
 import racingcar.view.InputView
 import racingcar.view.OutputView
 
@@ -16,10 +16,10 @@ class RacingGame(
     override fun startGame() {
         val user = createUser()
         val round = inputView.readTotalRound()
-        repeat(round) {
-            startRound(user)
-        }
-        val winner = decideWinner(user)
+
+        repeat(round) { startRound(user) }
+
+        val winner = findWinner(user)
         outputView.printGameWinner(winner)
     }
 
@@ -29,24 +29,15 @@ class RacingGame(
     }
 
     private fun startRound(user: User) {
-        decideCarMove(user)
+        moveAllCars(user)
         outputView.printCarDistance(user)
     }
 
-    private fun decideCarMove(user: User) {
-        user.cars.map { car ->
-            when {
-                NumberGenerator.getRandomNumber() < 4 -> car.stopMove()
-                else -> car.moveForward()
-            }
-        }
-    }
+    private fun moveAllCars(user: User) = user.cars.forEach { it.decideMove() }
 
-    private fun decideWinner(user: User): Winner {
+    private fun findWinner(user: User): Winner {
         val longDistance: String = user.getLongDistance()
-        val winners = user.cars.filter { car ->
-            longDistance.length == car.getDistance().length
-        }
+        val winners = user.cars.filter { it.getDistance().length == longDistance.length }
         return Winner(winners)
     }
 }
