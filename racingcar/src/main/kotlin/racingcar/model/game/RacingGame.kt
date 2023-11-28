@@ -1,7 +1,9 @@
 package racingcar.model.game
 
+import racingcar.extension.getLongDistance
 import racingcar.model.User
 import racingcar.extension.toCarList
+import racingcar.model.Winner
 import racingcar.model.car.Car
 import racingcar.util.NumberGenerator
 import racingcar.view.InputView
@@ -17,6 +19,8 @@ class RacingGame(
         repeat(round) {
             startRound(user)
         }
+        val winner = decideWinner(user)
+        outputView.printGameWinner(winner)
     }
 
     private fun createUser(): User {
@@ -36,5 +40,13 @@ class RacingGame(
                 else -> car.moveForward()
             }
         }
+    }
+
+    private fun decideWinner(user: User): Winner {
+        val longDistance: String = user.getLongDistance()
+        val winners = user.cars.filter { car ->
+            longDistance.length == car.getDistance().length
+        }
+        return Winner(winners)
     }
 }
