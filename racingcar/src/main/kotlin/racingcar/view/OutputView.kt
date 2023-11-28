@@ -1,6 +1,6 @@
 package racingcar.view
 
-import racingcar.User
+import racingcar.model.User
 
 class OutputView {
     fun printCarDistance(user: User) {

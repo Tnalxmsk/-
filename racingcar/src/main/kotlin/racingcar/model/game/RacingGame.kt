@@ -1,6 +1,6 @@
 package racingcar.model.game
 
-import racingcar.User
+import racingcar.model.User
 import racingcar.extension.toCarList
 import racingcar.model.car.Car
 import racingcar.util.NumberGenerator
