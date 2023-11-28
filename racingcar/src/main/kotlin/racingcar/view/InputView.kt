@@ -1,11 +1,15 @@
 package racingcar.view
 
 import camp.nextstep.edu.missionutils.Console
+import racingcar.validation.InputValidator
 
 class InputView {
+    private val inputValidator = InputValidator
+
     fun readCarName(): String {
         println(CAR_NAME_INPUT_VIEW)
         val names = Console.readLine()
+        inputValidator.validateName(names)
         return names
     }
 
