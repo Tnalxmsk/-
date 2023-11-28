@@ -1,5 +1,7 @@
 package racingcar.extension
 
+import racingcar.model.User
+
 import racingcar.model.car.Car
 
 fun String.toCarList(): List<Car> {
@@ -9,4 +11,13 @@ fun String.toCarList(): List<Car> {
         else -> input.map { name ->
             Car(name) }
     }
+}
+
+fun User.getLongDistance(): String {
+    var longDistance = ""
+    this.cars.forEach { car ->
+        if (longDistance.length < car.getDistance().length)
+            longDistance = car.getDistance()
+    }
+    return longDistance
 }
