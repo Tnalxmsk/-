@@ -1,4 +1,4 @@
-package model.car
+package racingcar.model.car
 
 interface Movement {
     fun moveForward()

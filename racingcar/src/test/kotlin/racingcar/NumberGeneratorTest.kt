@@ -1,7 +1,7 @@
 package racingcar
 
 import org.assertj.core.api.Assertions.assertThat
-import util.NumberGenerator
+import racingcar.util.NumberGenerator
 import kotlin.test.Test
 
 class NumberGeneratorTest {

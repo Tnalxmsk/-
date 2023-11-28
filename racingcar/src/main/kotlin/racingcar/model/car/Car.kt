@@ -1,4 +1,4 @@
-package model.car
+package racingcar.model.car
 
 class Car(val name: String) : Movement {
     private var distance = ""
