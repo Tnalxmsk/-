@@ -3,7 +3,7 @@ package racingcar.validation
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test
 
-class InputValidatorTest {
+class InputNameValidatorTest {
     @Test
     fun `이름을 아무 것도 입력하지 않았을 때 예외를 던진다`() {
         val input = ""
