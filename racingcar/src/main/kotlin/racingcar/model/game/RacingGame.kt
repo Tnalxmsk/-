@@ -5,9 +5,11 @@ import racingcar.extension.toCarList
 import racingcar.model.car.Car
 import racingcar.util.NumberGenerator
 import racingcar.view.InputView
+import racingcar.view.OutputView
 
 class RacingGame(
-    private val inputView: InputView
+    private val inputView: InputView,
+    private val outputView: OutputView
 ) : Game {
     override fun startGame() {
         val user = createUser()
@@ -24,6 +26,7 @@ class RacingGame(
 
     private fun startRound(user: User) {
         decideCarMove(user)
+        outputView.printCarDistance(user)
     }
 
     private fun decideCarMove(user: User) {
