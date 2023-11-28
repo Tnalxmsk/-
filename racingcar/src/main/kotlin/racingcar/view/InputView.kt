@@ -16,6 +16,7 @@ class InputView {
     fun readTotalRound(): Int {
         println(TOTAL_ROUND_INPUT_VIEW)
         val totalRound = Console.readLine()
+        inputValidator.validateTotalRound(totalRound)
         return totalRound.toInt()
     }
 
