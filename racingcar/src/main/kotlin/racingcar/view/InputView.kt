@@ -8,16 +8,28 @@ class InputView {
 
     fun readCarName(): String {
         println(CAR_NAME_INPUT_VIEW)
-        val names = Console.readLine()
-        inputValidator.validateName(names)
-        return names
+        while (true) {
+            try {
+                val names = Console.readLine()
+                inputValidator.validateName(names)
+                return names
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun readTotalRound(): Int {
         println(TOTAL_ROUND_INPUT_VIEW)
-        val totalRound = Console.readLine()
-        inputValidator.validateTotalRound(totalRound)
-        return totalRound.toInt()
+        while (true) {
+            try {
+                val totalRound = Console.readLine()
+                inputValidator.validateTotalRound(totalRound)
+                return totalRound.toInt()
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     companion object {
