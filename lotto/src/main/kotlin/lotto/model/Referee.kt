@@ -13,14 +13,12 @@ class Referee(
     }
 
     fun judeWinning(lotto: Lotto): WinningResult {
-        val size = getContainNumbers(lotto).size
-        return when {
-            size == 6 -> WinningResult.FIRST
-            size == 5 && lotto.isContainBonusNumber(bonusNumber) -> WinningResult.SECOND
-            size == 5 -> WinningResult.THIRD
-            size == 4 -> WinningResult.FORTH
-            size == 3 -> WinningResult.FIFTH
-            else -> WinningResult.FAIL
-        }
+        val matchingNumbersCount = getContainNumbers(lotto).size
+        return WinningResult.entries.firstOrNull {
+            it.isWinning(
+                matchingNumbersCount,
+                it == WinningResult.SECOND && lotto.isContainBonusNumber(bonusNumber)
+            )
+        } ?: WinningResult.FAIL
     }
 }
