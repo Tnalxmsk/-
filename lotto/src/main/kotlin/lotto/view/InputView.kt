@@ -6,6 +6,7 @@ class InputView {
     fun readAmount(): Int {
         println(INPUT_READ_AMOUNT)
         val amount = Console.readLine()
+        println()
         return amount.toInt()
     }
 
