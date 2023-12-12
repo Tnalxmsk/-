@@ -23,6 +23,8 @@ class InputView {
         try {
             println(INPUT_WINNING_NUMBER)
             val input = Console.readLine()
+            InputValidator.validCommonElement(input)
+            InputValidator.validateLottoNumber(input)
             val numbers = input.split(",")
             println()
             return Lotto(numbers.map { it.toInt() })
