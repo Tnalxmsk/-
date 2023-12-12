@@ -30,6 +30,13 @@
 - 보너스 번호 입력 - readBonusNumber()
 ### 출력 - OutputView
 - 발행한 로또 수량 및 번호 출력(로또 오름 차순 정렬)
+  - 구매한 로또 수량 출력 - printPurchaseLottoSummary()
+  - 구매한 로또 번호 출력 - printPurchaseLottoNumbers()
 - 당첨 내역 출력 (3 -> 6개)
 - 수익률 출력(소수점 둘째 자리 반올림)
 ### 로또 - Lotto
+- 로또 숫자를 반환하는 기능 - getLottoNumber()
+
+### 사용자 - Player
+### 숫자 생성기 - NumberGenerator
+- 숫자를 생성하는 기능 - generateNumber()
