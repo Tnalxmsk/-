@@ -25,7 +25,6 @@ class LottoGame : Game {
 
     private fun createReferee(): Referee {
         val winningNumber = inputView.readWinningNumber()
-        println()
         val bonusNumber = inputView.readBonusNumber()
         return Referee(winningNumber, bonusNumber)
     }
@@ -35,8 +34,8 @@ class LottoGame : Game {
             referee.judeWinning(it)
         }
         val profit = calculateProfit(calculatePrizeAmount(result), player.spendingAmount)
+        outputView.printWinningDetails(result)
         outputView.printTotalProfit(profit)
-
     }
 
     private fun calculatePrizeAmount(result: List<WinningResult>) = result.sumOf { it.prizeAmount }
