@@ -1,5 +1,6 @@
 package lotto.validation
 
+import lotto.config.LottoRule
 import lotto.extension.isNotLottoNumberFormat
 
 enum class InputValidator(val message: String) {
@@ -37,9 +38,9 @@ enum class InputValidator(val message: String) {
         fun validateLottoNumber(input: String) {
             val numbers = input.split(",")
             val error = when {
-                numbers.isNotLottoNumberFormat() -> INVALID_LOTTO_NUMBER
+                numbers.isNotLottoNumberFormat(LottoRule.STANDARD) -> INVALID_LOTTO_NUMBER
                 numbers.size != 6 -> INVALID_LOTTO_NUMBER_SIZE
-                numbers.size != numbers.toSet().size -> DUPLICATION_LOTTO_NUMBER
+                numbers.toSet().size != 6 -> DUPLICATION_LOTTO_NUMBER
                 else -> return
             }
             throw IllegalArgumentException(error.message)
