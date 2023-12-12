@@ -5,10 +5,13 @@ import lotto.util.NumberGenerator
 
 class Seller {
     fun sellLotto(amount: Int, lottoRule: LottoRule): List<Lotto> {
-        val lottoBundle = mutableListOf<Lotto>()
-        for (i in 1..amount/1000) {
-            lottoBundle.add(Lotto(NumberGenerator.getNumbers(lottoRule)))
+        val lastCycle = amount / THOUSAND_AMOUNT
+        return (1..lastCycle).map {
+            Lotto(NumberGenerator.getNumbers(lottoRule))
         }
-        return lottoBundle
+    }
+
+    companion object {
+        private const val THOUSAND_AMOUNT = 1000
     }
 }
