@@ -3,6 +3,7 @@ package lotto.model.game
 import lotto.model.Player
 import lotto.model.Referee
 import lotto.model.Seller
+import lotto.model.WinningResult
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -18,6 +19,9 @@ class LottoGame : Game {
 
         val player = Player(amount, lottoBundle)
         val referee = createReferee()
+
+        val result = startComparing(player, referee)
+        println(calculatePrizeAmount(result))
     }
 
     private fun createReferee(): Referee {
@@ -26,4 +30,13 @@ class LottoGame : Game {
         val bonusNumber = inputView.readBonusNumber()
         return Referee(winningNumber, bonusNumber)
     }
+
+    private fun startComparing(player: Player, referee: Referee): List<WinningResult> {
+        val result = player.lottoBundle.map {
+            referee.judeWinning(it)
+        }
+        return result
+    }
+
+    private fun calculatePrizeAmount(result: List<WinningResult>) = result.sumOf { it.prizeAmount }
 }
