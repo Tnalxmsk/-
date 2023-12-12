@@ -1,6 +1,7 @@
 package lotto.model.game
 
 import lotto.model.Player
+import lotto.model.Referee
 import lotto.model.Seller
 import lotto.view.InputView
 import lotto.view.OutputView
@@ -16,5 +17,12 @@ class LottoGame : Game {
         outputView.printPurchaseDetails(lottoBundle)
 
         val player = Player(amount, lottoBundle)
+        val referee = createReferee()
+    }
+
+    private fun createReferee(): Referee {
+        val winningNumber = inputView.readWinningNumber()
+        val bonusNumber = inputView.readBonusNumber()
+        return Referee(winningNumber, bonusNumber)
     }
 }
