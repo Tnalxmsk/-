@@ -5,7 +5,9 @@ import lotto.model.Lotto
 class OutputView {
     fun printPurchaseDetails(lottoBundle: List<Lotto>) {
         printPurchaseLottoSummary(lottoBundle)
+        println()
         printPurchaseLottoNumbers(lottoBundle)
+        println()
     }
 
     private fun printPurchaseLottoSummary(lottoBundle: List<Lotto>) =
@@ -13,7 +15,6 @@ class OutputView {
 
     private fun printPurchaseLottoNumbers(lottoBundle: List<Lotto>) {
         lottoBundle.forEach { println(it.getLottoNumber()) }
-        println()
     }
 
     fun printTotalProfit(profit: Double) {
