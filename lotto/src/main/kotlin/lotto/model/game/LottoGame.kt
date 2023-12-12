@@ -13,5 +13,8 @@ class LottoGame : Game {
         val seller = Seller()
         val amount = inputView.readAmount()
         val lottoBundle = seller.sellLotto(amount)
+        outputView.printPurchaseDetails(lottoBundle)
+
+        val player = Player(amount, lottoBundle)
     }
 }
