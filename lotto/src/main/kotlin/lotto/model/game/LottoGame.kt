@@ -1,9 +1,6 @@
 package lotto.model.game
 
-import lotto.model.Player
-import lotto.model.Referee
-import lotto.model.Seller
-import lotto.model.WinningResult
+import lotto.model.*
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -14,7 +11,7 @@ class LottoGame(
 ) : Game {
     override fun startGame() {
         val amount = inputView.readAmount()
-        val lottoBundle = seller.sellLotto(amount)
+        val lottoBundle = seller.sellLotto(amount, LottoRule.STANDARD)
         outputView.printPurchaseDetails(lottoBundle)
 
         val player = Player(amount, lottoBundle)
