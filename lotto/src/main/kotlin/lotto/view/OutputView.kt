@@ -19,11 +19,10 @@ class OutputView {
 
     fun printWinningDetails(result: List<WinningResult>) {
         println(VIEW_DETAILS)
-        println("${WinningResult.FIFTH.text}${NUMBER_WINNING.format(result.count { it == WinningResult.FIFTH })}")
-        println("${WinningResult.FORTH.text}${NUMBER_WINNING.format(result.count { it == WinningResult.FORTH })}")
-        println("${WinningResult.THIRD.text}${NUMBER_WINNING.format(result.count { it == WinningResult.THIRD })}")
-        println("${WinningResult.SECOND.text}${NUMBER_WINNING.format(result.count { it == WinningResult.SECOND })}")
-        println("${WinningResult.FIRST.text}${NUMBER_WINNING.format(result.count { it == WinningResult.FIRST })}")
+        WinningResult.entries.filter { it != WinningResult.FAIL }.forEach { winningResult ->
+            val count = result.count { it == winningResult }
+            println("${winningResult.text}${NUMBER_WINNING.format(count)}")
+        }
     }
 
     fun printTotalProfit(profit: Double) {
