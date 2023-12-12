@@ -1,4 +1,4 @@
-package lotto.model
+package lotto.config
 
 enum class WinningResult(val text: String, val prizeAmount: Int) {
     FIRST("6개 일치 (2,000,000,000원)", 2_000_000_000),

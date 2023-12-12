@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.config.WinningResult
 import lotto.extension.isContainBonusNumber
 
 class Referee(

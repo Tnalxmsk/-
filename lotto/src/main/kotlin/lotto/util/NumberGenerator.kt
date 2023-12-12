@@ -1,7 +1,7 @@
 package lotto.util
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.model.LottoRule
+import lotto.config.LottoRule
 
 object NumberGenerator {
     fun getNumbers(lottoRule: LottoRule): List<Int> {

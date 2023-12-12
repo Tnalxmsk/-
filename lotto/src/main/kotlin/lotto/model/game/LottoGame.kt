@@ -1,5 +1,7 @@
 package lotto.model.game
 
+import lotto.config.LottoRule
+import lotto.config.WinningResult
 import lotto.model.*
 import lotto.view.InputView
 import lotto.view.OutputView

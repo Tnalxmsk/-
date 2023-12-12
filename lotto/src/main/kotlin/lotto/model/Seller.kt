@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.config.LottoRule
 import lotto.util.NumberGenerator
 
 class Seller {

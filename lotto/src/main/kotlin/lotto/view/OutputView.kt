@@ -1,7 +1,7 @@
 package lotto.view
 
 import lotto.model.Lotto
-import lotto.model.WinningResult
+import lotto.config.WinningResult
 
 class OutputView {
     fun printPurchaseDetails(lottoBundle: List<Lotto>) {
