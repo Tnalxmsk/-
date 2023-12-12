@@ -15,12 +15,14 @@ class InputView {
         println(INPUT_WINNING_NUMBER)
         val input = Console.readLine()
         val numbers = input.split(",")
+        println()
         return Lotto(numbers.map { it.toInt() })
     }
 
     fun readBonusNumber(): Int {
         println(INPUT_BONUS_NUMBER)
         val bonusNumber = Console.readLine()
+        println()
         return bonusNumber.toInt()
     }
 
