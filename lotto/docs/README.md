@@ -23,7 +23,7 @@
 4. 통계 결과 출력 - O
 5. 수익률 계산 - O
 6. 수익률 출력 - O
-7. 예외 처리 구현 - X
+7. 예외 처리 구현 - O
 
 ### 입력 - InputView
 - 금액 입력(1000원 단위 - 나누어 떨어지기! 안되면 예외 ) - readAmount()
@@ -53,7 +53,8 @@
 - 당첨인지 판단하는 기능 추가 - judeWinning()
 
 ### 로또 게임 - LottoGame
-- 로또 게임을 시작하는 기능
-- 심판을 생성하는 기능
-- 총 상금을 계산하는 기능
-- 수익률을 계산하는 기능
+- 로또 게임을 시작하는 기능 - startGame()
+- 심판을 생성하는 기능 - createReferee()
+- 로또와 당첨 번호를 비교하는 기능 - compareLottoWithWinningNumbers()
+- 총 상금을 계산하는 기능 - calculatePrizeAmount()
+- 수익률을 계산하는 기능 - calculateProfit()
