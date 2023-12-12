@@ -20,8 +20,7 @@ class LottoGame : Game {
         val player = Player(amount, lottoBundle)
         val referee = createReferee()
 
-        val result = startComparing(player, referee)
-        println(calculatePrizeAmount(result))
+        startComparing(player, referee)
     }
 
     private fun createReferee(): Referee {
@@ -31,12 +30,18 @@ class LottoGame : Game {
         return Referee(winningNumber, bonusNumber)
     }
 
-    private fun startComparing(player: Player, referee: Referee): List<WinningResult> {
+    private fun startComparing(player: Player, referee: Referee) {
         val result = player.lottoBundle.map {
             referee.judeWinning(it)
         }
-        return result
+        val profit = calculateProfit(calculatePrizeAmount(result), player.spendingAmount)
+        outputView.printTotalProfit(profit)
+
     }
 
     private fun calculatePrizeAmount(result: List<WinningResult>) = result.sumOf { it.prizeAmount }
+
+    private fun calculateProfit(prizeAmount: Int, spendingAmount: Int): Double {
+        return prizeAmount.toDouble() / spendingAmount.toDouble() * 100.0
+    }
 }
