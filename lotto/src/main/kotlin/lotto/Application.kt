@@ -1,5 +1,6 @@
 package lotto
 
+import lotto.config.LottoRule
 import lotto.model.Seller
 import lotto.model.game.LottoGame
 import lotto.view.InputView
@@ -9,7 +10,7 @@ fun main() {
     val inputView = InputView()
     val outputView = OutputView()
     val seller = Seller()
-    val lottoGame = LottoGame(inputView, outputView, seller)
+    val lottoGame = LottoGame(inputView, outputView, seller, LottoRule.STANDARD)
 
     lottoGame.startGame()
 }

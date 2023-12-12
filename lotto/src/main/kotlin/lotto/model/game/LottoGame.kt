@@ -9,11 +9,12 @@ import lotto.view.OutputView
 class LottoGame(
     private val inputView: InputView,
     private val outputView: OutputView,
-    private val seller: Seller
+    private val seller: Seller,
+    private val lottoRule: LottoRule
 ) : Game {
     override fun startGame() {
         val amount = inputView.readAmount()
-        val lottoBundle = seller.sellLotto(amount, LottoRule.STANDARD)
+        val lottoBundle = seller.sellLotto(amount, lottoRule)
         outputView.printPurchaseDetails(lottoBundle)
 
         val player = Player(amount, lottoBundle)
