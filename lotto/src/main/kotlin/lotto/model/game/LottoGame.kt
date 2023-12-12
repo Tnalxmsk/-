@@ -22,6 +22,7 @@ class LottoGame : Game {
 
     private fun createReferee(): Referee {
         val winningNumber = inputView.readWinningNumber()
+        println()
         val bonusNumber = inputView.readBonusNumber()
         return Referee(winningNumber, bonusNumber)
     }
