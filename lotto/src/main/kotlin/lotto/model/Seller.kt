@@ -1,0 +1,13 @@
+package lotto.model
+
+import lotto.util.NumberGenerator
+
+class Seller {
+    fun sellLotto(amount: Int): List<Lotto> {
+        val lottoBundle = mutableListOf<Lotto>()
+        for (i in 1..amount/1000) {
+            lottoBundle.add(Lotto(NumberGenerator.getNumbers()))
+        }
+        return lottoBundle
+    }
+}
