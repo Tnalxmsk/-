@@ -17,8 +17,8 @@
 - 사용자와 당첨 번호 비교 -> 당첨 내역 및 수익률 출력
 
 ## 개발 순서
-1. 로또 구입, 로또 번호 출력
-2. 당첨 번호 및 보너스 번호 입력
+1. 로또 구입, 로또 번호 출력 - O
+2. 당첨 번호 및 보너스 번호 입력 - O
 3. 사용자 번호와 비교 기능 구현
 4. 통계 결과 출력
 5. 수익률 계산
@@ -26,17 +26,22 @@
 
 ### 입력 - InputView
 - 금액 입력(1000원 단위 - 나누어 떨어지기! 안되면 예외 ) - readAmount()
-- 당첨 번호 입력(쉼포 구분) - readWinningNumber()
-- 보너스 번호 입력 - readBonusNumber()
+- 당첨 번호 입력(쉼포 구분) - readWinningNumber() - readWinningNumber()
+- 보너스 번호 입력 - readBonusNumber() - readBonusNumber()
+
 ### 출력 - OutputView
 - 발행한 로또 수량 및 번호 출력(로또 오름 차순 정렬)
   - 구매한 로또 수량 출력 - printPurchaseLottoSummary()
   - 구매한 로또 번호 출력 - printPurchaseLottoNumbers()
 - 당첨 내역 출력 (3 -> 6개)
 - 수익률 출력(소수점 둘째 자리 반올림)
+
 ### 로또 - Lotto
 - 로또 숫자를 반환하는 기능 - getLottoNumber()
 
 ### 사용자 - Player
+
 ### 숫자 생성기 - NumberGenerator
 - 숫자를 생성하는 기능 - generateNumber()
+
+### 심판 - Referee
