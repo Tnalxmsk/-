@@ -9,6 +9,7 @@ class InputView {
         try {
             println(INPUT_READ_AMOUNT)
             val amount = Console.readLine()
+            InputValidator.validCommonElement(amount)
             InputValidator.validateAmount(amount)
             println()
             return amount.toInt()
@@ -32,10 +33,17 @@ class InputView {
     }
 
     fun readBonusNumber(): Int {
-        println(INPUT_BONUS_NUMBER)
-        val bonusNumber = Console.readLine()
-        println()
-        return bonusNumber.toInt()
+        try {
+            println(INPUT_BONUS_NUMBER)
+            val bonusNumber = Console.readLine()
+            InputValidator.validCommonElement(bonusNumber)
+            InputValidator.validateBonusNumber(bonusNumber)
+            println()
+            return bonusNumber.toInt()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return readBonusNumber()
+        }
     }
 
     companion object {
