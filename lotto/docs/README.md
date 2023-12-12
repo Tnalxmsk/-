@@ -45,3 +45,4 @@
 - 숫자를 생성하는 기능 - generateNumber()
 
 ### 심판 - Referee
+- 당첨 번호에 포함되는 숫자를 반환하는 기능 getSame

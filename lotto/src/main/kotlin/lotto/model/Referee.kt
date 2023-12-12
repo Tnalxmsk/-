@@ -6,13 +6,13 @@ class Referee(
     private val winningNumber: Lotto,
     private val bonusNumber: Int
 ) {
-    private fun getSameNumbers(lotto: Lotto): List<Int> {
+    private fun getContainNumbers(lotto: Lotto): List<Int> {
         val userWinningNumbers = lotto.getLottoNumber().filter { winningNumber.getLottoNumber().contains(it) }
         return userWinningNumbers
     }
 
     fun judeWinning(lotto: Lotto): WinningResult {
-        val size = getSameNumbers(lotto).size
+        val size = getContainNumbers(lotto).size
         return when {
             size == 6 -> WinningResult.FIRST
             size == 5 && lotto.isContainBonusNumber(bonusNumber) -> WinningResult.SECOND
