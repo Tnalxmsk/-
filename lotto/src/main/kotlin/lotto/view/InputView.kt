@@ -2,21 +2,33 @@ package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
 import lotto.model.Lotto
+import lotto.validation.InputValidator
 
 class InputView {
     fun readAmount(): Int {
-        println(INPUT_READ_AMOUNT)
-        val amount = Console.readLine()
-        println()
-        return amount.toInt()
+        try {
+            println(INPUT_READ_AMOUNT)
+            val amount = Console.readLine()
+            InputValidator.validateAmount(amount)
+            println()
+            return amount.toInt()
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return readAmount()
+        }
     }
 
     fun readWinningNumber(): Lotto {
-        println(INPUT_WINNING_NUMBER)
-        val input = Console.readLine()
-        val numbers = input.split(",")
-        println()
-        return Lotto(numbers.map { it.toInt() })
+        try {
+            println(INPUT_WINNING_NUMBER)
+            val input = Console.readLine()
+            val numbers = input.split(",")
+            println()
+            return Lotto(numbers.map { it.toInt() })
+        } catch (e: IllegalArgumentException) {
+            println(e.message)
+            return readWinningNumber()
+        }
     }
 
     fun readBonusNumber(): Int {
